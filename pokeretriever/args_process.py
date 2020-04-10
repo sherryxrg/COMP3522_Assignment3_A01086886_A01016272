@@ -58,7 +58,7 @@ class Request:
                 # print(response)
                 mode_name = response['name']
 
-                # todo: pokemon have 1-2 types
+                # todo: parse lists - stats, types, abilities, moves
                 if self.mode.lower() == 'pokemon':
                     pokemon = Pokemon(response['name'],
                                       int(response['id']),
