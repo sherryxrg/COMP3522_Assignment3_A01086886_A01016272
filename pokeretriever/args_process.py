@@ -41,7 +41,7 @@ class Request:
         json_response = await response.json()
         return json_response
 
-    async def process_pokedex_object(self, objects: list):
+    async def _process_pokedex_object(self, objects: list):
         """
         This function depicts the use of asyncio.gather to run multiple
         async coroutines concurrently. This allows us to execute multiple
