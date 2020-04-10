@@ -16,16 +16,9 @@ class Pokedex:
 
         self.req = ""
 
-    def launch_ui_menu(self):
-        """
-        Displays a user-interactive menu.
-        :return:
-        """
-        pass
-
     def execute_request(self, request: Request):
         # process request
-        # request.get_pokedex_object()
+        request.get_pokedex_object()
 
         # todo: dummy finished request: PokedexObject -- REMOVE
         dummy_move = PokemonAbility("pressure", 46,
