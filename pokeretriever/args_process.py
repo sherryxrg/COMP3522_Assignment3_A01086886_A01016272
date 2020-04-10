@@ -70,7 +70,7 @@ class Request:
                                       response['moves'])
                     self.pokedex.append(pokemon)
                     p_type = response['types']
-                    print(f"{self.mode}: {mode_name.upper()}, "
+                    print(f">> GOT {self.mode}: {mode_name.upper()}, "
                           f"{p_type[0]['type']['name']} Pokemon!")
 
                 if self.mode.lower() == 'ability':
@@ -82,7 +82,7 @@ class Request:
                                              effect[0]['short_effect'],
                                              response['pokemon'])
                     self.pokedex.append(ability)
-                    print(f"{self.mode}: {mode_name.upper()}! "
+                    print(f">> GOT {self.mode}: {mode_name.upper()}! "
                           f"{effect[0]['short_effect']}")
 
                 if self.mode.lower() == 'move':
@@ -96,13 +96,12 @@ class Request:
                                        response['damage_class'],
                                        effect[0]['short_effect'])
                     self.pokedex.append(move)
-                    print(f"{self.mode}: {mode_name.upper()}! "
+                    print(f">> GOT {self.mode}: {mode_name.upper()}! "
                           f"{effect[0]['short_effect']}")
 
     def get_pokedex_object(self):
         """
         Does further processing on the dictionary to display it.
-        :return:
         """
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)

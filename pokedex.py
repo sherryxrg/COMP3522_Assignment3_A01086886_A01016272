@@ -11,16 +11,15 @@ class Pokedex:
 
     def __init__(self):
         # todo: CHANGED
-        # store a list of Requests, and then access their list of
-        # PokedexObjects for printing
+        # store a list of pokedexes
 
-        self.req_list = []
+        self.pokedex_list = []
 
     def execute_request(self, request: Request):
         # process request
-        poke_obj = request.get_pokedex_object()
+        request.get_pokedex_object()
 
-        self.req_list.append(poke_obj)
+        self.pokedex_list = request.pokedex
         # Done! -- print to console, and also write to file
         self._gen_output()
 
@@ -59,7 +58,7 @@ class Pokedex:
 
         # make Request object
         req = Request(args.mode, input_data, args.expanded)
-        self.req_list.append(req)
+        self.pokedex_list.append(req)
         return req
 
     def _gen_output(self):
@@ -76,8 +75,8 @@ class Pokedex:
         #         f.write("\n")
 
         # otherwise just ouput to console:
-        for req in self.req_list:
-            print(req)
+        for poke_obj in self.pokedex_list:
+            print(str(poke_obj))
 
 
 def main():

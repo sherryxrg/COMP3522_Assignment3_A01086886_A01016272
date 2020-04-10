@@ -35,6 +35,14 @@ class PokemonAbility(PokedexObject):
         self.short_effect = short_effect
         self.pokemon = pokemon
 
+    def __str__(self):
+        return f"\n*--- Pokemon Ability ---*" \
+               f"\nname: {self.name}" \
+               f"\nid: {self.id_num}" \
+               f"\neffect: {self.effect}" \
+               f"\nshort effect: {self.short_effect}" \
+               f"\npokemon: {self.pokemon}"
+
 
 class PokemonMove(PokedexObject):
 
