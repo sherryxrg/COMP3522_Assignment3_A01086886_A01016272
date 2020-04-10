@@ -60,11 +60,20 @@ class Request:
 
                 # todo: parse lists - stats, types, abilities, moves
                 if self.mode.lower() == 'pokemon':
+                    stats_dict = {}
+                    stats_list = response['stats']
+                    for d in stats_list:
+                        for k, v in d.items():
+                            stat_name = d['stat']['name']
+                            base = d['base_stat']
+                            stats_dict[stat_name] = base
+
+                    # do something with the key, value pair
                     pokemon = Pokemon(response['name'],
                                       int(response['id']),
                                       int(response['height']),
                                       int(response['weight']),
-                                      response['stats'],
+                                      stats_dict,
                                       response['types'],
                                       response['abilities'],
                                       response['moves'])
