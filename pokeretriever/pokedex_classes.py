@@ -4,7 +4,7 @@ Contains all classes for making pokedexObjects.
 import abc
 
 
-class PokedexObject(abc):
+class PokedexObject:
 
     def __init__(self, name: str, id_num: int):
         self.name = name
