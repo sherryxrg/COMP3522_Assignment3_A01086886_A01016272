@@ -11,9 +11,9 @@ from prettytable import PrettyTable
 class Pokedex:
 
     def __init__(self):
-        # todo: CHANGED
-        # store a list of pokedexes
-
+        """
+        Stores the pokedex from the request object.
+        """
         self.pokedex_list = []
 
     def execute_request(self, request: Request):
@@ -31,18 +31,14 @@ class Pokedex:
                             help="Mode application will be opened in")
 
         group = parser.add_mutually_exclusive_group(required=True)
-        # todo: must have '.txt' extension
         group.add_argument('-if', '--inputfile',
                            help="File must have .txt extension.")
-        # todo: id must be an int, and name must be str
         group.add_argument('-id', '--inputdata', action='append',
                            help="ID must be a digit, name must be a string.")
-
         parser.add_argument('-x', '--expanded',
                             action="store_true",
                             help="Only Pokemon queries support this mode. "
                                  "Default is False.")
-        # todo: must have '.txt' extension
         parser.add_argument('-o', '--output', type=str,
                             help="File must have .txt extension.")
 
@@ -50,6 +46,7 @@ class Pokedex:
         # through terminal/command line
         args = parser.parse_args()
 
+        # todo: might want to refactor this to another method !!
         # input_data varies based on input
         output = ""
         if args.output:
