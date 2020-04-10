@@ -1,4 +1,4 @@
-import argparse
+from pokeretriever.pokedex_classes import *
 import ssl
 import aiohttp
 import asyncio
@@ -6,7 +6,7 @@ import asyncio
 
 class Request:
 
-    def __init__(self, mode: str, input_data: str,
+    def __init__(self, mode: str, input_data: list,
                  expanded: bool,
                  input_file=None, output_file=None):
         """
@@ -23,7 +23,7 @@ class Request:
         self.input_file = input_file
         self.output_file = output_file
 
-        self.url = "https://pokeapi.co/api/v2/"
+        self.url = f"https://pokeapi.co/api/v2/{self.mode}/"
         self.pokedex = []
 
     def __str__(self):
@@ -34,37 +34,91 @@ class Request:
                f"\nexpanded: {self.expanded}" \
                f"\noutput file: {self.output_file}"
 
-    async def get_pokedex_object(self, pokedex_obj, session: aiohttp.ClientSession) -> dict:
-        url = self.url + str(pokedex_obj)
-        response = await session.request(method="GET", url=url,
+    async def api_call(self, poke_id, session: aiohttp.ClientSession) -> dict:
+        api_url = self.url + str(poke_id)
+        response = await session.request(method="GET", url=api_url,
                                          ssl=ssl.SSLContext())
         json_response = await response.json()
         return json_response
 
-    async def process_pokedex_object(self, objects: list):
+    async def process_pokedex_object(self, poke_ids: list):
         """
         This function depicts the use of asyncio.gather to run multiple
         async coroutines concurrently. This allows us to execute multiple
         HTTP GET requests concurrently and save time.
-        :param objects: a list of int or str, a list of pokemon ability id/names
+        :param poke_ids: a list of int or str, representing name / id of either
+        a Pokemon, Pokemon Move, Pokemon Ability, or Pokemon Stat
         """
         async with aiohttp.ClientSession() as session:
-            list_urls = [obj for obj in objects]
-            coroutines = [self.get_pokedex_object(my_url, session) for my_url
-                          in list_urls]
+            list_urls = [p_id for p_id in poke_ids]
+            coroutines = [self.api_call(my_url, session)
+                          for my_url in list_urls]
             responses = await asyncio.gather(*coroutines)
             for response in responses:
-                print(response)
-                # effect = response['effect_entries']
-                # ability = Ability(response['name'], int(response['id']),
-                #                   response['generation'], effect[0]['effect'], effect[0]['short_effect'], response['pokemon'])
-                # self.abilities.append(ability)
-                # ability_name = response['name']
-                # print(f"Ability: {ability_name.upper()}! {effect[0]['short_effect']}")
+                # print(response)
+                mode_name = response['name']
+
+                # todo: pokemon have 1-2 types
+                if self.mode.lower() == 'pokemon':
+                    pokemon = Pokemon(response['name'],
+                                      int(response['id']),
+                                      int(response['height']),
+                                      int(response['weight']),
+                                      response['stats'],
+                                      response['types'],
+                                      response['abilities'],
+                                      response['moves'])
+                    self.pokedex.append(pokemon)
+                    p_type = response['types']
+                    print(f"{self.mode}: {mode_name.upper()}, "
+                          f"{p_type[0]['type']['name']} Pokemon!")
+
+                if self.mode.lower() == 'ability':
+                    effect = response['effect_entries']
+                    ability = PokemonAbility(response['name'],
+                                             int(response['id']),
+                                             response['generation'],
+                                             effect[0]['effect'],
+                                             effect[0]['short_effect'],
+                                             response['pokemon'])
+                    self.pokedex.append(ability)
+                    print(f"{self.mode}: {mode_name.upper()}! "
+                          f"{effect[0]['short_effect']}")
+
+                if self.mode.lower() == 'move':
+                    effect = response['effect_entries']
+                    move = PokemonMove(response['name'],
+                                       int(response['id']),
+                                       response['generation'],
+                                       response['accuracy'], response['pp'],
+                                       response['power'],
+                                       response['type'],
+                                       response['damage_class'],
+                                       effect[0]['short_effect'])
+                    self.pokedex.append(move)
+                    print(f"{self.mode}: {mode_name.upper()}! "
+                          f"{effect[0]['short_effect']}")
+
+    def get_pokedex_object(self):
+        """
+        Does further processing on the dictionary to display it.
+        :return:
+        """
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(self.process_pokedex_object(self.input_data))
 
 
 def main():
-    pass
+    input_list = [1, 3, 5]
+    r = Request('ability', input_list, False)
+    r.get_pokedex_object()
+
+    r1 = Request('pokemon', input_list, False)
+    r1.get_pokedex_object()
+
+    r2 = Request('move', input_list, False)
+    r2.get_pokedex_object()
 
 
 if __name__ == '__main__':
