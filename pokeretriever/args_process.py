@@ -58,6 +58,7 @@ class Request:
         self.input_file = input_file
         self.output_file = output_file
 
+
 def cmd_requests():
     parser = argparse.ArgumentParser()
     parser.add_argument('mode', type=str,
