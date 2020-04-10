@@ -120,6 +120,9 @@ def main():
     r2 = Request('move', input_list, False)
     r2.get_pokedex_object()
 
+    for x in r2.pokedex:
+        print(str(x))
+
 
 if __name__ == '__main__':
     main()
