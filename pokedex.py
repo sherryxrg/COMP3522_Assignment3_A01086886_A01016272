@@ -35,8 +35,9 @@ class Pokedex:
         group.add_argument('-if', '--inputfile',
                            help="File must have .txt extension.")
         # todo: id must be an int, and name must be str
-        group.add_argument('-id', '--inputdata', type=int or str,
+        group.add_argument('-id', '--inputdata', action='append',
                            help="ID must be a digit, name must be a string.")
+
         parser.add_argument('-x', '--expanded',
                             action="store_true",
                             help="Only Pokemon queries support this mode. "
@@ -75,7 +76,7 @@ class Pokedex:
         #         f.write("\n")
 
         # otherwise just ouput to console:
-        for req in self.req_list():
+        for req in self.req_list:
             print(req)
 
 
@@ -84,8 +85,6 @@ def main():
     pkdx = Pokedex()
 
     req = pkdx.cmd_requests()
-    print(str(req))
-
     pkdx.execute_request(req)
 
 
