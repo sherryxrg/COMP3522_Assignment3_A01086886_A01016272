@@ -14,21 +14,13 @@ class Pokedex:
         # store a list of Requests, and then access their list of
         # PokedexObjects for printing
 
-        self.req = ""
+        self.req_list = []
 
     def execute_request(self, request: Request):
         # process request
-        request.get_pokedex_object()
+        poke_obj = request.get_pokedex_object()
 
-        # todo: dummy finished request: PokedexObject -- REMOVE
-        dummy_move = PokemonAbility("pressure", 46,
-                                   "generation-iii",
-                                   "Moves targetting this Pokémon use one extra PP. This ability stacks if multiple targets have it. This ability still affects moves that fail or miss. This ability does not affect ally moves that target either the entire field or just its side, nor this Pokémon's self-targetted moves; it does, however, affect single-targetted ally moves aimed at this Pokémon, ally moves that target all other Pokémon, and opponents' moves that target the entire field. If this ability raises a move's PP cost above its remaining PP, it will use all remaining PP. When this Pokémon enters battle, all participating trainers are notified that it has this ability. Overworld: If the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",
-                                   "Increases the PP cost of moves targetting the Pokémon by one.",
-                                   ['mewtwo', 'dialga', 'lugia'])
-
-        # todo: normally this list has request objects, this is to test
-        self.req_list.append(dummy_move)
+        self.req_list.append(poke_obj)
         # Done! -- print to console, and also write to file
         self._gen_output()
 
@@ -91,9 +83,10 @@ def main():
 
     pkdx = Pokedex()
 
-    #
     req = pkdx.cmd_requests()
     print(str(req))
+
+    pkdx.execute_request(req)
 
 
 if __name__ == "__main__":
