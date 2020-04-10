@@ -51,16 +51,24 @@ class Pokedex:
         args = parser.parse_args()
 
         # input_data varies based on input
-        if args.inputfile:
-            input_data = args.inputfile
-        else:
-            input_data = args.inputdata
-
+        output = ""
         if args.output:
             output = args.output
 
-        # make Request object
-        req = Request(args.mode, input_data, args.expanded, output_file=output)
+        if args.inputfile:
+            with open(args.inputfile, 'r') as f:
+                words_list = f.read().split("\n")
+                words_list.pop()
+
+            input_data = words_list
+            req = Request(args.mode, args.expanded, input_data,
+                          output_file=output)
+        else:
+            input_data = args.inputdata
+            print(input_data)
+            req = Request(args.mode, args.expanded, input_data,
+                          output_file=output)
+
         self.pokedex_list.append(req)
         return req
 
