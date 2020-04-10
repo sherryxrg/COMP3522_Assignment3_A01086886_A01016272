@@ -62,7 +62,6 @@ class Pokedex:
                           output_file=output)
         else:
             input_data = args.inputdata
-            print(input_data)
             req = Request(args.mode, args.expanded, input_data,
                           output_file=output)
 
