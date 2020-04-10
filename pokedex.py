@@ -25,7 +25,7 @@ class Pokedex:
 
     def execute_request(self, request: Request):
         # process request
-        # request.process_pokedex_object()
+        # request.get_pokedex_object()
 
         # todo: dummy finished request: PokedexObject -- REMOVE
         dummy_move = PokemonAbility("pressure", 46,
@@ -82,13 +82,16 @@ class Pokedex:
         Otherwise prints output to console.
         """
         # if output is true, also write to file as well
-        with open('output_report.txt', 'w') as f:
-            for req in self.req_list:
-                f.write("+======= Pokemon data =======+")
-                f.write()
-                f.write("\n")
 
-        # otherwise just ouput to console
+        # with open('output_report.txt', 'w') as f:
+        #     for req in self.req_list:
+        #         f.write("+======= Pokemon data =======+")
+        #         f.write()
+        #         f.write("\n")
+
+        # otherwise just ouput to console:
+        for req in self.req_list():
+            print(req)
 
 
 def main():
