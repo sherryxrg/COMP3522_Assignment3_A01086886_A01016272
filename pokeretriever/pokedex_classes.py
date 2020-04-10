@@ -51,6 +51,9 @@ class PokemonMove(PokedexObject):
         self.damage_class = damage_class
         self.short_effect = short_effect
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class Pokemon(PokedexObject):
 
