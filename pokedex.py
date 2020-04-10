@@ -49,7 +49,6 @@ class Pokedex:
         # This parses all the arguments passed
         # through terminal/command line
         args = parser.parse_args()
-        # return args
 
         # input_data varies based on input
         if args.inputfile:
@@ -57,8 +56,11 @@ class Pokedex:
         else:
             input_data = args.inputdata
 
+        if args.output:
+            output = args.output
+
         # make Request object
-        req = Request(args.mode, input_data, args.expanded)
+        req = Request(args.mode, input_data, args.expanded, output_file=output)
         self.pokedex_list.append(req)
         return req
 
@@ -68,11 +70,13 @@ class Pokedex:
         Otherwise prints output to console.
         """
         # if output is true, also write to file as well
+        print("\nrequest file: ", request.output_file)
+
         if request.output_file is not None:
-            with open(request.output_file, 'w') as f:
-                for req in self.req_list:
-                    f.write("+======= Pokemon data =======+")
-                    f.write()
+            with open(f"{request.output_file}", 'w') as f:
+                f.write("+======= Courtesy of Dr. Oaks' Lab =======+")
+                for poke_obj in self.pokedex_list:
+                    f.write(str(poke_obj))
                     f.write("\n")
 
         # otherwise just ouput to console:

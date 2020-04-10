@@ -40,11 +40,11 @@ class PokemonAbility(PokedexObject):
 
     def __str__(self):
         return f"\n*--- Pokemon Ability ---*" \
-               f"\n> name: {self.name}" \
-               f"\n> id: {self.id_num}" \
-               f"\n> effect: {textwrap.fill(self.effect, 50)}" \
-               f"\n> short effect: {self.short_effect}" \
-               f"\n> pokemon: {self.pokemon}"
+               f"\n> NAME: {self.name}" \
+               f"\n> ID: {self.id_num}" \
+               f"\n> EFFECT: {textwrap.fill(self.effect, 80)}" \
+               f"\n> SHORT EFFECT: {self.short_effect}" \
+               f"\n> POKEMON: {self.pokemon, 80}"
 
 
 class PokemonMove(PokedexObject):
