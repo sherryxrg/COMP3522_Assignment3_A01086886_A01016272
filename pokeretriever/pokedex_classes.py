@@ -1,7 +1,7 @@
 """
 Contains all classes for making pokedexObjects.
 """
-import abc
+import textwrap
 
 
 class PokedexObject:
@@ -37,11 +37,11 @@ class PokemonAbility(PokedexObject):
 
     def __str__(self):
         return f"\n*--- Pokemon Ability ---*" \
-               f"\nname: {self.name}" \
-               f"\nid: {self.id_num}" \
-               f"\neffect: {self.effect}" \
-               f"\nshort effect: {self.short_effect}" \
-               f"\npokemon: {self.pokemon}"
+               f"\n> name: {self.name}" \
+               f"\n> id: {self.id_num}" \
+               f"\n> effect: {textwrap.fill(self.effect, 50)}" \
+               f"\n> short effect: {self.short_effect}" \
+               f"\n> pokemon: {self.pokemon}"
 
 
 class PokemonMove(PokedexObject):

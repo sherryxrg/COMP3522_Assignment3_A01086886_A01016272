@@ -2,6 +2,7 @@
 Facade UI that provides access to the poketriever module.
 """
 import argparse
+import textwrap
 from pokeretriever.args_process import Request
 from pokeretriever.pokedex_classes import *
 from prettytable import PrettyTable
@@ -16,12 +17,12 @@ class Pokedex:
         self.pokedex_list = []
 
     def execute_request(self, request: Request):
-        # process request
+        # process request -- populate request.pokedex
         request.get_pokedex_object()
 
         self.pokedex_list = request.pokedex
         # Done! -- print to console, and also write to file
-        self._gen_output()
+        self._gen_output(request)
 
     def cmd_requests(self) -> Request:
         parser = argparse.ArgumentParser()
@@ -61,18 +62,18 @@ class Pokedex:
         self.pokedex_list.append(req)
         return req
 
-    def _gen_output(self):
+    def _gen_output(self, request: Request):
         """
         Request generates an output if the --output flag is on.
         Otherwise prints output to console.
         """
         # if output is true, also write to file as well
-
-        # with open('output_report.txt', 'w') as f:
-        #     for req in self.req_list:
-        #         f.write("+======= Pokemon data =======+")
-        #         f.write()
-        #         f.write("\n")
+        if request.output_file is not None:
+            with open(request.output_file, 'w') as f:
+                for req in self.req_list:
+                    f.write("+======= Pokemon data =======+")
+                    f.write()
+                    f.write("\n")
 
         # otherwise just ouput to console:
         for poke_obj in self.pokedex_list:
