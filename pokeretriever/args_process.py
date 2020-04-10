@@ -6,8 +6,8 @@ import asyncio
 
 class Request:
 
-    def __init__(self, mode: str, input_data: list,
-                 expanded: bool,
+    def __init__(self, mode: str,
+                 expanded: bool, input_data,
                  input_file=None, output_file=None):
         """
         Also stores a list of pokedex objects in self.pokedex

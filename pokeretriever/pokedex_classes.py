@@ -1,7 +1,7 @@
 """
 Contains all classes for making pokedexObjects.
 """
-import abc
+import textwrap
 
 
 class PokedexObject:
@@ -40,11 +40,11 @@ class PokemonAbility(PokedexObject):
 
     def __str__(self):
         return f"\n*--- Pokemon Ability ---*" \
-               f"\nname: {self.name}" \
-               f"\nid: {self.id_num}" \
-               f"\neffect: {self.effect}" \
-               f"\nshort effect: {self.short_effect}" \
-               f"\npokemon: {self.pokemon}"
+               f"\n> NAME: {self.name}" \
+               f"\n> ID: {self.id_num}" \
+               f"\n> EFFECT: {textwrap.fill(self.effect, 80)}" \
+               f"\n> SHORT EFFECT: {self.short_effect}" \
+               f"\n> POKEMON: {self.pokemon, 80}"
 
 
 class PokemonMove(PokedexObject):
@@ -63,11 +63,11 @@ class PokemonMove(PokedexObject):
 
     def __str__(self):
         return f"\n*--- Pokemon Move ---*" \
-               f"\nname: {self.name}" \
-               f"\nid: {self.id_num}" \
-               f"\naccuracy: {self.accuracy}" \
-               f"\nmove type: {self.move_type}" \
-               f"\neffect: {self.short_effect}"
+               f"\n> NAME: {self.name}" \
+               f"\n> ID: {self.id_num}" \
+               f"\n> ACCURACY: {self.accuracy}" \
+               f"\n> MOVE TYPE: {self.move_type}" \
+               f"\n> EFFECT: {self.short_effect}"
 
 
 class Pokemon(PokedexObject):
@@ -85,9 +85,9 @@ class Pokemon(PokedexObject):
 
     def __str__(self):
         return f"\n*--- Pokemon ---*" \
-               f"\nname: {self.name}" \
-               f"\nid: {self.id_num}" \
-               f"\nstats: {self.stats}" \
-               f"\ntypes: {self.types}" \
-               f"\nabilities: {self.abilities}" \
-               f"\nmoves: {self.moves}"
+               f"\n> NAME: {self.name}" \
+               f"\n> ID: {self.id_num}" \
+               f"\n> STATS: {self.stats}" \
+               f"\n> TYPES: {self.types}" \
+               f"\n> ABILITIES: {self.abilities}" \
+               f"\n> MOVES: {self.moves}"
