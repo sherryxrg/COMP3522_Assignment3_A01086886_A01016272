@@ -36,7 +36,6 @@ class Request:
 
     async def api_call(self, poke_id, session: aiohttp.ClientSession,
                        opt_url=None) -> dict:
-        api_url = ""
         if opt_url is not None:
             api_url = opt_url
         else:
