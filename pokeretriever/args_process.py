@@ -67,10 +67,22 @@ class Request:
                     stats_dict = {}
                     stats_list = response['stats']
                     for d in stats_list:
-                        for k, v in d.items():
-                            stat_name = d['stat']['name']
-                            base = d['base_stat']
-                            stats_dict[stat_name] = base
+                        stats_dict[d['stat']['name']] = d['base_stat']
+
+                    type_list = []
+                    response_type = response['types']
+                    for d in response_type:
+                        type_list.append(d['type']['name'])
+
+                    ability_list = []
+                    response_ability = response['abilities']
+                    for d in response_ability:
+                        ability_list.append(d['ability']['name'])
+
+                    moves_dict = {}
+                    moves_list = response['moves']
+                    for d in moves_list:
+                        moves_dict[d['move']['name']] = d['version_group_details'][0]['level_learned_at']
 
                     # do something with the key, value pair
                     pokemon = Pokemon(response['name'],
@@ -78,13 +90,13 @@ class Request:
                                       int(response['height']),
                                       int(response['weight']),
                                       stats_dict,
-                                      response['types'],
-                                      response['abilities'],
-                                      response['moves'])
+                                      type_list,
+                                      ability_list,
+                                      moves_dict)
                     self.pokedex.append(pokemon)
                     p_type = response['types']
                     print(f">> GOT {self.mode}: {mode_name.upper()}, "
-                          f"{p_type[0]['type']['name']} Pokemon!")
+                          f"{pokemon.types} Pokemon!")
 
                 if self.mode.lower() == 'ability':
                     effect = response['effect_entries']
