@@ -34,8 +34,13 @@ class Request:
                f"\nexpanded: {self.expanded}" \
                f"\noutput file: {self.output_file}"
 
-    async def api_call(self, poke_id, session: aiohttp.ClientSession) -> dict:
-        api_url = self.url + str(poke_id)
+    async def api_call(self, poke_id, session: aiohttp.ClientSession,
+                       opt_url=None) -> dict:
+        api_url = ""
+        if opt_url is not None:
+            api_url = opt_url
+        else:
+            api_url = self.url + str(poke_id)
         response = await session.request(method="GET", url=api_url,
                                          ssl=ssl.SSLContext())
         json_response = await response.json()
