@@ -99,30 +99,36 @@ class Request:
                           f"{pokemon.types} Pokemon!")
 
                 if self.mode.lower() == 'ability':
+                    pokemon_list = []
+                    response_pokemon = response['pokemon']
+                    for d in response_pokemon:
+                        pokemon_list.append(d['pokemon']['name'])
+
                     effect = response['effect_entries']
                     ability = PokemonAbility(response['name'],
                                              int(response['id']),
                                              response['generation'],
                                              effect[0]['effect'],
                                              effect[0]['short_effect'],
-                                             response['pokemon'])
+                                             pokemon_list)
                     self.pokedex.append(ability)
                     print(f">> GOT {self.mode}: {mode_name.upper()}! "
-                          f"{effect[0]['short_effect']}")
+                          f"{ability.short_effect}")
 
                 if self.mode.lower() == 'move':
+
                     effect = response['effect_entries']
                     move = PokemonMove(response['name'],
                                        int(response['id']),
                                        response['generation'],
                                        response['accuracy'], response['pp'],
                                        response['power'],
-                                       response['type'],
+                                       response['type']['name'],
                                        response['damage_class'],
                                        effect[0]['short_effect'])
                     self.pokedex.append(move)
                     print(f">> GOT {self.mode}: {mode_name.upper()}! "
-                          f"{effect[0]['short_effect']}")
+                          f"{move.short_effect}")
 
     def get_pokedex_object(self):
         """

@@ -1,8 +1,10 @@
 +======= Courtesy of Dr. Oaks' Lab =======+
-*--- Pokemon ---*
-> NAME: bulbasaur
+*--- Pokemon Ability ---*
+> NAME: stench
 > ID: 1
-> STATS: {'speed': 45, 'special-defense': 65, 'special-attack': 65, 'defense': 49, 'attack': 49, 'hp': 45}
-> TYPES: ['poison', 'grass']
-> ABILITIES: ['chlorophyll', 'overgrow']
-> MOVES: {'razor-wind': 0, 'swords-dance': 0, 'cut': 0, 'bind': 0, 'vine-whip': 9, 'headbutt': 0, 'tackle': 1, 'body-slam': 0, 'take-down': 15, 'double-edge': 27, 'growl': 3, 'strength': 0, 'mega-drain': 0, 'leech-seed': 7, 'growth': 25, 'razor-leaf': 19, 'solar-beam': 0, 'poison-powder': 13, 'sleep-powder': 13, 'petal-dance': 0, 'string-shot': 0, 'toxic': 0, 'rage': 0, 'mimic': 0, 'double-team': 0, 'defense-curl': 0, 'light-screen': 0, 'reflect': 0, 'bide': 0, 'sludge': 0, 'skull-bash': 0, 'amnesia': 0, 'flash': 0, 'rest': 0, 'substitute': 0, 'snore': 0, 'curse': 0, 'protect': 0, 'sludge-bomb': 0, 'mud-slap': 0, 'giga-drain': 0, 'endure': 0, 'charm': 0, 'swagger': 0, 'fury-cutter': 0, 'attract': 0, 'sleep-talk': 0, 'return': 0, 'frustration': 0, 'safeguard': 0, 'sweet-scent': 21, 'synthesis': 33, 'hidden-power': 0, 'sunny-day': 0, 'rock-smash': 0, 'facade': 0, 'nature-power': 0, 'ingrain': 0, 'knock-off': 0, 'secret-power': 0, 'grass-whistle': 0, 'bullet-seed': 0, 'magical-leaf': 0, 'natural-gift': 0, 'worry-seed': 31, 'seed-bomb': 37, 'energy-ball': 0, 'leaf-storm': 0, 'power-whip': 0, 'captivate': 0, 'grass-knot': 0, 'venoshock': 0, 'round': 0, 'echoed-voice': 0, 'grass-pledge': 0, 'work-up': 0, 'grassy-terrain': 0, 'confide': 0}
+> EFFECT: This Pokémon's damaging moves have a 10% chance to make the target flinch with
+each hit if they do not already cause flinching as a secondary effect.  This
+ability does not stack with a held item.  Overworld: The wild encounter rate is
+halved while this Pokémon is first in the party.
+> SHORT EFFECT: Has a 10% chance of making target Pokémon flinch with each hit.
+> POKEMON: (['gloom', 'grimer', 'muk', 'stunky', 'skuntank', 'trubbish', 'garbodor'], 80)
