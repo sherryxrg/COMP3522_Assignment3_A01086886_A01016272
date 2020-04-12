@@ -3,6 +3,9 @@ Facade UI that provides access to the poketriever module.
 """
 import argparse
 import textwrap
+
+from aiohttp import ContentTypeError
+
 from pokeretriever.args_process import Request
 from pokeretriever.pokedex_classes import *
 from prettytable import PrettyTable
@@ -18,7 +21,10 @@ class Pokedex:
 
     def execute_request(self, request: Request):
         # process request -- populate request.pokedex
-        request.get_pokedex_object()
+        try:
+            request.get_pokedex_object()
+        except ContentTypeError:
+            print("-- Input does not match mode. Please check file --")
 
         self.pokedex_list = request.pokedex
         # Done! -- print to console, and also write to file
