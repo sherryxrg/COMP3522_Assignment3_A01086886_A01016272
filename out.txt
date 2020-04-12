@@ -8,3 +8,31 @@ ability does not stack with a held item.  Overworld: The wild encounter rate is
 halved while this Pokémon is first in the party.
 > SHORT EFFECT: Has a 10% chance of making target Pokémon flinch with each hit.
 > POKEMON: (['gloom', 'grimer', 'muk', 'stunky', 'skuntank', 'trubbish', 'garbodor'], 80)
+=======
+*--- Pokemon Move ---*
+> NAME: ancient-power
+> ID: 246
+> ACCURACY: 100
+> MOVE TYPE: {'name': 'rock', 'url': 'https://pokeapi.co/api/v2/type/6/'}
+> EFFECT: Has a $effect_chance% chance to raise all of the user's stats by one stage.
+
+*--- Pokemon Move ---*
+> NAME: ice-punch
+> ID: 8
+> ACCURACY: 100
+> MOVE TYPE: {'name': 'ice', 'url': 'https://pokeapi.co/api/v2/type/15/'}
+> EFFECT: Has a $effect_chance% chance to freeze the target.
+
+*--- Pokemon Move ---*
+> NAME: supersonic
+> ID: 48
+> ACCURACY: 55
+> MOVE TYPE: {'name': 'normal', 'url': 'https://pokeapi.co/api/v2/type/1/'}
+> EFFECT: Confuses the target.
+
+*--- Pokemon Move ---*
+> NAME: growl
+> ID: 45
+> ACCURACY: 100
+> MOVE TYPE: {'name': 'normal', 'url': 'https://pokeapi.co/api/v2/type/1/'}
+> EFFECT: Lowers the target's Attack by one stage.

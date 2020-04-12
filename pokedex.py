@@ -48,7 +48,7 @@ class Pokedex:
 
         # todo: might want to refactor this to another method !!
         # input_data varies based on input
-        output = ""
+        output = None
         if args.output:
             output = args.output
 
