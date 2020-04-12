@@ -24,7 +24,8 @@ class Pokedex:
         try:
             request.get_pokedex_object()
         except ContentTypeError:
-            print("-- Input does not match mode. Please check file --")
+            print("-- Invalid input or input does not match mode. "
+                  "Please check file --")
 
         self.pokedex_list = request.pokedex
         # Done! -- print to console, and also write to file
