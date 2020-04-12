@@ -130,3 +130,4 @@ dmypy.json
 
 # do not commit output files
 out.txt
+test.txt
