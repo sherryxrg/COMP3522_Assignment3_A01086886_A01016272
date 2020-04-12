@@ -1,43 +1,28 @@
 +======= Courtesy of Dr. Oaks' Lab =======+
-*--- Pokemon Ability ---*
-> NAME: pressure
-> ID: 46
-> EFFECT: Moves targetting this Pokémon use one extra PP.  This ability stacks if multiple
-targets have it.  This ability still affects moves that fail or miss.  This
-ability does not affect ally moves that target either the entire field or just
-its side, nor this Pokémon's self-targetted moves; it does, however, affect
-single-targetted ally moves aimed at this Pokémon, ally moves that target all
-other Pokémon, and opponents' moves that target the entire field.  If this
-ability raises a move's PP cost above its remaining PP, it will use all
-remaining PP.  When this Pokémon enters battle, all participating trainers are
-notified that it has this ability.  Overworld: If the lead Pokémon has this
-ability, higher-levelled Pokémon have their encounter rate increased.
-> SHORT EFFECT: Increases the PP cost of moves targetting the Pokémon by one.
-> POKEMON: ([{'is_hidden': False, 'pokemon': {'name': 'aerodactyl', 'url': 'https://pokeapi.co/api/v2/pokemon/142/'}, 'slot': 2}, {'is_hidden': False, 'pokemon': {'name': 'articuno', 'url': 'https://pokeapi.co/api/v2/pokemon/144/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'zapdos', 'url': 'https://pokeapi.co/api/v2/pokemon/145/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'moltres', 'url': 'https://pokeapi.co/api/v2/pokemon/146/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'mewtwo', 'url': 'https://pokeapi.co/api/v2/pokemon/150/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'raikou', 'url': 'https://pokeapi.co/api/v2/pokemon/243/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'entei', 'url': 'https://pokeapi.co/api/v2/pokemon/244/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'suicune', 'url': 'https://pokeapi.co/api/v2/pokemon/245/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'lugia', 'url': 'https://pokeapi.co/api/v2/pokemon/249/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'ho-oh', 'url': 'https://pokeapi.co/api/v2/pokemon/250/'}, 'slot': 1}, {'is_hidden': True, 'pokemon': {'name': 'wailmer', 'url': 'https://pokeapi.co/api/v2/pokemon/320/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'wailord', 'url': 'https://pokeapi.co/api/v2/pokemon/321/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'dusclops', 'url': 'https://pokeapi.co/api/v2/pokemon/356/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'absol', 'url': 'https://pokeapi.co/api/v2/pokemon/359/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'deoxys-normal', 'url': 'https://pokeapi.co/api/v2/pokemon/386/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'vespiquen', 'url': 'https://pokeapi.co/api/v2/pokemon/416/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'spiritomb', 'url': 'https://pokeapi.co/api/v2/pokemon/442/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'weavile', 'url': 'https://pokeapi.co/api/v2/pokemon/461/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'dusknoir', 'url': 'https://pokeapi.co/api/v2/pokemon/477/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'dialga', 'url': 'https://pokeapi.co/api/v2/pokemon/483/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'palkia', 'url': 'https://pokeapi.co/api/v2/pokemon/484/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'giratina-altered', 'url': 'https://pokeapi.co/api/v2/pokemon/487/'}, 'slot': 1}, {'is_hidden': True, 'pokemon': {'name': 'pawniard', 'url': 'https://pokeapi.co/api/v2/pokemon/624/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'bisharp', 'url': 'https://pokeapi.co/api/v2/pokemon/625/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'kyurem', 'url': 'https://pokeapi.co/api/v2/pokemon/646/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'deoxys-attack', 'url': 'https://pokeapi.co/api/v2/pokemon/10001/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'deoxys-defense', 'url': 'https://pokeapi.co/api/v2/pokemon/10002/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'deoxys-speed', 'url': 'https://pokeapi.co/api/v2/pokemon/10003/'}, 'slot': 1}], 80)
+*--- Pokemon Move ---*
+> NAME: ancient-power
+> ID: 246
+> ACCURACY: 100
+> MOVE TYPE: {'name': 'rock', 'url': 'https://pokeapi.co/api/v2/type/6/'}
+> EFFECT: Has a $effect_chance% chance to raise all of the user's stats by one stage.
 
-*--- Pokemon Ability ---*
-> NAME: stench
-> ID: 1
-> EFFECT: This Pokémon's damaging moves have a 10% chance to make the target flinch with
-each hit if they do not already cause flinching as a secondary effect.  This
-ability does not stack with a held item.  Overworld: The wild encounter rate is
-halved while this Pokémon is first in the party.
-> SHORT EFFECT: Has a 10% chance of making target Pokémon flinch with each hit.
-> POKEMON: ([{'is_hidden': True, 'pokemon': {'name': 'gloom', 'url': 'https://pokeapi.co/api/v2/pokemon/44/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'grimer', 'url': 'https://pokeapi.co/api/v2/pokemon/88/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'muk', 'url': 'https://pokeapi.co/api/v2/pokemon/89/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'stunky', 'url': 'https://pokeapi.co/api/v2/pokemon/434/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'skuntank', 'url': 'https://pokeapi.co/api/v2/pokemon/435/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'trubbish', 'url': 'https://pokeapi.co/api/v2/pokemon/568/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'garbodor', 'url': 'https://pokeapi.co/api/v2/pokemon/569/'}, 'slot': 1}], 80)
+*--- Pokemon Move ---*
+> NAME: ice-punch
+> ID: 8
+> ACCURACY: 100
+> MOVE TYPE: {'name': 'ice', 'url': 'https://pokeapi.co/api/v2/type/15/'}
+> EFFECT: Has a $effect_chance% chance to freeze the target.
 
-*--- Pokemon Ability ---*
-> NAME: telepathy
-> ID: 140
-> EFFECT: This Pokémon does not take damage from friendly Pokémon's moves, including
-single-target moves aimed at it.
-> SHORT EFFECT: Protects against friendly Pokémon's damaging moves.
-> POKEMON: ([{'is_hidden': True, 'pokemon': {'name': 'wobbuffet', 'url': 'https://pokeapi.co/api/v2/pokemon/202/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'ralts', 'url': 'https://pokeapi.co/api/v2/pokemon/280/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'kirlia', 'url': 'https://pokeapi.co/api/v2/pokemon/281/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'gardevoir', 'url': 'https://pokeapi.co/api/v2/pokemon/282/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'meditite', 'url': 'https://pokeapi.co/api/v2/pokemon/307/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'medicham', 'url': 'https://pokeapi.co/api/v2/pokemon/308/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'wynaut', 'url': 'https://pokeapi.co/api/v2/pokemon/360/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'dialga', 'url': 'https://pokeapi.co/api/v2/pokemon/483/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'palkia', 'url': 'https://pokeapi.co/api/v2/pokemon/484/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'giratina-altered', 'url': 'https://pokeapi.co/api/v2/pokemon/487/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'munna', 'url': 'https://pokeapi.co/api/v2/pokemon/517/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'musharna', 'url': 'https://pokeapi.co/api/v2/pokemon/518/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'elgyem', 'url': 'https://pokeapi.co/api/v2/pokemon/605/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'beheeyem', 'url': 'https://pokeapi.co/api/v2/pokemon/606/'}, 'slot': 1}, {'is_hidden': True, 'pokemon': {'name': 'noibat', 'url': 'https://pokeapi.co/api/v2/pokemon/714/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'noivern', 'url': 'https://pokeapi.co/api/v2/pokemon/715/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'oranguru', 'url': 'https://pokeapi.co/api/v2/pokemon/765/'}, 'slot': 2}, {'is_hidden': True, 'pokemon': {'name': 'tapu-koko', 'url': 'https://pokeapi.co/api/v2/pokemon/785/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'tapu-lele', 'url': 'https://pokeapi.co/api/v2/pokemon/786/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'tapu-bulu', 'url': 'https://pokeapi.co/api/v2/pokemon/787/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'tapu-fini', 'url': 'https://pokeapi.co/api/v2/pokemon/788/'}, 'slot': 3}], 80)
+*--- Pokemon Move ---*
+> NAME: supersonic
+> ID: 48
+> ACCURACY: 55
+> MOVE TYPE: {'name': 'normal', 'url': 'https://pokeapi.co/api/v2/type/1/'}
+> EFFECT: Confuses the target.
 
-*--- Pokemon Ability ---*
-> NAME: water-absorb
-> ID: 11
-> EFFECT: Whenever a water-type move hits this Pokémon, it heals for 1/4 of its maximum
-HP, negating any other effect on it.  Water moves will ignore this Pokémon's
-substitute.
-> SHORT EFFECT: Absorbs water moves, healing for 1/4 max HP.
-> POKEMON: ([{'is_hidden': False, 'pokemon': {'name': 'poliwag', 'url': 'https://pokeapi.co/api/v2/pokemon/60/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'poliwhirl', 'url': 'https://pokeapi.co/api/v2/pokemon/61/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'poliwrath', 'url': 'https://pokeapi.co/api/v2/pokemon/62/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'lapras', 'url': 'https://pokeapi.co/api/v2/pokemon/131/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'vaporeon', 'url': 'https://pokeapi.co/api/v2/pokemon/134/'}, 'slot': 1}, {'is_hidden': True, 'pokemon': {'name': 'chinchou', 'url': 'https://pokeapi.co/api/v2/pokemon/170/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'lanturn', 'url': 'https://pokeapi.co/api/v2/pokemon/171/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'politoed', 'url': 'https://pokeapi.co/api/v2/pokemon/186/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'wooper', 'url': 'https://pokeapi.co/api/v2/pokemon/194/'}, 'slot': 2}, {'is_hidden': False, 'pokemon': {'name': 'quagsire', 'url': 'https://pokeapi.co/api/v2/pokemon/195/'}, 'slot': 2}, {'is_hidden': False, 'pokemon': {'name': 'mantine', 'url': 'https://pokeapi.co/api/v2/pokemon/226/'}, 'slot': 2}, {'is_hidden': True, 'pokemon': {'name': 'cacnea', 'url': 'https://pokeapi.co/api/v2/pokemon/331/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'cacturne', 'url': 'https://pokeapi.co/api/v2/pokemon/332/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'mantyke', 'url': 'https://pokeapi.co/api/v2/pokemon/458/'}, 'slot': 2}, {'is_hidden': True, 'pokemon': {'name': 'tympole', 'url': 'https://pokeapi.co/api/v2/pokemon/535/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'palpitoad', 'url': 'https://pokeapi.co/api/v2/pokemon/536/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'seismitoad', 'url': 'https://pokeapi.co/api/v2/pokemon/537/'}, 'slot': 3}, {'is_hidden': False, 'pokemon': {'name': 'maractus', 'url': 'https://pokeapi.co/api/v2/pokemon/556/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'frillish', 'url': 'https://pokeapi.co/api/v2/pokemon/592/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'jellicent', 'url': 'https://pokeapi.co/api/v2/pokemon/593/'}, 'slot': 1}, {'is_hidden': False, 'pokemon': {'name': 'volcanion', 'url': 'https://pokeapi.co/api/v2/pokemon/721/'}, 'slot': 1}, {'is_hidden': True, 'pokemon': {'name': 'dewpider', 'url': 'https://pokeapi.co/api/v2/pokemon/751/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'araquanid', 'url': 'https://pokeapi.co/api/v2/pokemon/752/'}, 'slot': 3}, {'is_hidden': True, 'pokemon': {'name': 'araquanid-totem', 'url': 'https://pokeapi.co/api/v2/pokemon/10153/'}, 'slot': 3}], 80)
+*--- Pokemon Move ---*
+> NAME: growl
+> ID: 45
+> ACCURACY: 100
+> MOVE TYPE: {'name': 'normal', 'url': 'https://pokeapi.co/api/v2/type/1/'}
+> EFFECT: Lowers the target's Attack by one stage.
