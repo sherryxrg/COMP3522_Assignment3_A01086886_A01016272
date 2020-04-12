@@ -58,77 +58,89 @@ class Request:
             coroutines = [self.api_call(my_url, session)
                           for my_url in list_urls]
             responses = await asyncio.gather(*coroutines)
-            for response in responses:
-                # print(response)
-                mode_name = response['name']
+        for response in responses:
+            # print(response)
+            mode_name = response['name']
 
-                # todo: parse lists - stats, types, abilities, moves
-                if self.mode.lower() == 'pokemon':
-                    stats_dict = {}
-                    stats_list = response['stats']
-                    for d in stats_list:
-                        stats_dict[d['stat']['name']] = d['base_stat']
+            # todo: parse lists - stats, types, abilities, moves
+            if self.mode.lower() == 'pokemon':
+                stats_dict = {}
+                stats_list = response['stats']
+                for d in stats_list:
+                    stats_dict[d['stat']['name']] = d['base_stat']
 
-                    type_list = []
-                    response_type = response['types']
-                    for d in response_type:
-                        type_list.append(d['type']['name'])
+                type_list = []
+                response_type = response['types']
+                for d in response_type:
+                    type_list.append(d['type']['name'])
 
-                    ability_list = []
-                    response_ability = response['abilities']
-                    for d in response_ability:
-                        ability_list.append(d['ability']['name'])
+                ability_list = []
+                response_ability = response['abilities']
+                for d in response_ability:
+                    ability_list.append(d['ability']['name'])
 
-                    moves_dict = {}
-                    moves_list = response['moves']
-                    for d in moves_list:
-                        moves_dict[d['move']['name']] = d['version_group_details'][0]['level_learned_at']
+                moves_dict = {}
+                moves_list = response['moves']
+                for d in moves_list:
+                    moves_dict[d['move']['name']] = d['version_group_details'][0]['level_learned_at']
 
-                    # do something with the key, value pair
-                    pokemon = Pokemon(response['name'],
-                                      int(response['id']),
-                                      int(response['height']),
-                                      int(response['weight']),
-                                      stats_dict,
-                                      type_list,
-                                      ability_list,
-                                      moves_dict)
-                    self.pokedex.append(pokemon)
-                    p_type = response['types']
-                    print(f">> GOT {self.mode}: {mode_name.upper()}, "
-                          f"{pokemon.types} Pokemon!")
+                # do something with the key, value pair
+                pokemon = Pokemon(response['name'],
+                                  int(response['id']),
+                                  int(response['height']),
+                                  int(response['weight']),
+                                  stats_dict,
+                                  type_list,
+                                  ability_list,
+                                  moves_dict)
+                self.pokedex.append(pokemon)
+                p_type = response['types']
+                print(f">> GOT {self.mode}: {mode_name.upper()}, "
+                      f"{pokemon.types} Pokemon!")
 
-                if self.mode.lower() == 'ability':
-                    pokemon_list = []
-                    response_pokemon = response['pokemon']
-                    for d in response_pokemon:
-                        pokemon_list.append(d['pokemon']['name'])
+                # if self.expanded:
+                #     # ability
+                #     # self.mode = 'ability'
+                #     async with aiohttp.ClientSession() as session:
+                #         a_url = [a for a in response_ability]
+                #         for x in a_url:
+                #             print(x)
+                #         a_coroutines = [self.api_call(a, session)
+                #                       for a in a_url]
+                #         a_responses = await asyncio.gather(*a_coroutines)
+                #         print(a_responses)
 
-                    effect = response['effect_entries']
-                    ability = PokemonAbility(response['name'],
-                                             int(response['id']),
-                                             response['generation'],
-                                             effect[0]['effect'],
-                                             effect[0]['short_effect'],
-                                             pokemon_list)
-                    self.pokedex.append(ability)
-                    print(f">> GOT {self.mode}: {mode_name.upper()}! "
-                          f"{ability.short_effect}")
+            if self.mode.lower() == 'ability':
+                pokemon_list = []
+                response_pokemon = response['pokemon']
+                for d in response_pokemon:
+                    pokemon_list.append(d['pokemon']['name'])
 
-                if self.mode.lower() == 'move':
+                effect = response['effect_entries']
+                ability = PokemonAbility(response['name'],
+                                         int(response['id']),
+                                         response['generation'],
+                                         effect[0]['effect'],
+                                         effect[0]['short_effect'],
+                                         pokemon_list)
+                self.pokedex.append(ability)
+                print(f">> GOT {self.mode}: {mode_name.upper()}! "
+                      f"{ability.short_effect}")
 
-                    effect = response['effect_entries']
-                    move = PokemonMove(response['name'],
-                                       int(response['id']),
-                                       response['generation'],
-                                       response['accuracy'], response['pp'],
-                                       response['power'],
-                                       response['type']['name'],
-                                       response['damage_class'],
-                                       effect[0]['short_effect'])
-                    self.pokedex.append(move)
-                    print(f">> GOT {self.mode}: {mode_name.upper()}! "
-                          f"{move.short_effect}")
+            if self.mode.lower() == 'move':
+
+                effect = response['effect_entries']
+                move = PokemonMove(response['name'],
+                                   int(response['id']),
+                                   response['generation'],
+                                   response['accuracy'], response['pp'],
+                                   response['power'],
+                                   response['type']['name'],
+                                   response['damage_class'],
+                                   effect[0]['short_effect'])
+                self.pokedex.append(move)
+                print(f">> GOT {self.mode}: {mode_name.upper()}! "
+                      f"{move.short_effect}")
 
     def get_pokedex_object(self):
         """
