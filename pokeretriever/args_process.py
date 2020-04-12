@@ -34,10 +34,9 @@ class Request:
                f"\nexpanded: {self.expanded}" \
                f"\noutput file: {self.output_file}"
 
-    async def api_call(self, poke_id, session: aiohttp.ClientSession,
-                       opt_url=None) -> dict:
+    async def api_call(self, poke_id, session: aiohttp.ClientSession, opt_url = None) -> dict:
         if opt_url is not None:
-            api_url = opt_url
+            api_url = opt_url + str(poke_id)
         else:
             api_url = self.url + str(poke_id)
         response = await session.request(method="GET", url=api_url,
@@ -58,6 +57,7 @@ class Request:
             coroutines = [self.api_call(my_url, session)
                           for my_url in list_urls]
             responses = await asyncio.gather(*coroutines)
+
         for response in responses:
             # print(response)
             mode_name = response['name']
@@ -66,6 +66,7 @@ class Request:
             if self.mode.lower() == 'pokemon':
                 stats_dict = {}
                 stats_list = response['stats']
+                print(stats_list)
                 for d in stats_list:
                     stats_dict[d['stat']['name']] = d['base_stat']
 
@@ -84,6 +85,49 @@ class Request:
                 for d in moves_list:
                     moves_dict[d['move']['name']] = d['version_group_details'][0]['level_learned_at']
 
+                if self.expanded:
+                    # ability
+                    async with aiohttp.ClientSession() as session:
+                        a_url = [a['ability']['name'] for a in
+                                 response_ability]
+                        a_coroutines = [self.api_call(a, session,
+                                                      opt_url='https://pokeapi.co/api/v2/ability/')
+                                        for a in a_url]
+                        a_responses = await asyncio.gather(*a_coroutines)
+                        # print(a_responses)
+                    # ability_list = a_responses
+                    # a_obj_list = {}
+                    # for i, e in enumerate(ability_list):
+                    #     a_obj_list[e] = a_responses[i]
+
+                    # stat
+                    async with aiohttp.ClientSession() as session:
+                        s_url = [s for s in stats_dict.keys()]
+                        s_coroutines = [self.api_call(s, session,
+                                                      opt_url='https://pokeapi.co/api/v2/stat/')
+                                        for s in s_url]
+                        s_responses = await asyncio.gather(*s_coroutines)
+                        s_dict = {}
+                        for x in s_url:
+                            for y in s_responses:
+                               stat = PokemonStat(x, 0, y['is_battle_only'])
+
+                    # move
+                    async with aiohttp.ClientSession() as session:
+                        # for x in moves_dict.keys():
+                        #     print(x)
+                        m_url = [m for m in moves_dict.keys()]
+                        m_coroutines = [self.api_call(m, session,
+                                                      opt_url='https://pokeapi.co/api/v2/move/')
+                                        for m in m_url]
+                        m_responses = await asyncio.gather(*m_coroutines)
+                        # print(m_responses)
+                    # moves_dict = m_responses
+                    print("THIS IS THE EXPANDED ABILITY RESPONSES:\n")
+                    print(a_responses)
+                    print("THIS IS THE EXPANDED STAT RESPONSES:\n")
+                    print(s_responses)
+
                 # do something with the key, value pair
                 pokemon = Pokemon(response['name'],
                                   int(response['id']),
@@ -91,24 +135,12 @@ class Request:
                                   int(response['weight']),
                                   stats_dict,
                                   type_list,
-                                  ability_list,
+                                  ability_list,  # now takes in an object
                                   moves_dict)
                 self.pokedex.append(pokemon)
-                p_type = response['types']
+                # p_type = response['types']
                 print(f">> GOT {self.mode}: {mode_name.upper()}, "
                       f"{pokemon.types} Pokemon!")
-
-                # if self.expanded:
-                #     # ability
-                #     # self.mode = 'ability'
-                #     async with aiohttp.ClientSession() as session:
-                #         a_url = [a for a in response_ability]
-                #         for x in a_url:
-                #             print(x)
-                #         a_coroutines = [self.api_call(a, session)
-                #                       for a in a_url]
-                #         a_responses = await asyncio.gather(*a_coroutines)
-                #         print(a_responses)
 
             if self.mode.lower() == 'ability':
                 pokemon_list = []
@@ -128,7 +160,6 @@ class Request:
                       f"{ability.short_effect}")
 
             if self.mode.lower() == 'move':
-
                 effect = response['effect_entries']
                 move = PokemonMove(response['name'],
                                    int(response['id']),

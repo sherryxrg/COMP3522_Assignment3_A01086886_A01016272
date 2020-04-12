@@ -24,7 +24,8 @@ class PokemonStat(PokedexObject):
         self.is_battle_only = is_battle_only
 
     def __str__(self):
-        return f"\n*--- Pokemon Stats ---*" \
+        return f"\n*--- Pokemon Stats ---* " \
+               f"\n{self.name}" \
                f"\nBattle Only: {self.is_battle_only}"
 
 
